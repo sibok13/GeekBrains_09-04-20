@@ -1,5 +1,12 @@
-revenue = int(input("Укажите прибыль\n"))
-costs = int(input("Укажите затраты\n"))
+while True:
+    revenue = input("Укажите прибыль\n")
+    costs = input("Укажите затраты\n")
+    if revenue.isdigit() and costs.isdigit():
+        revenue = float(revenue)
+        costs = float(costs)
+        break
+    else:
+        print("Вы ввели не корректные данные, вводите только числа")
 
 if revenue - costs > 0:
     profit = revenue - costs

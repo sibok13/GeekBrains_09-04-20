@@ -1,11 +1,16 @@
-# тип переменной сделал float, так как результат может быть не целым числом (например, 1.5 км)
-
-result_km = float(input("Укажите результат первого дня в км:\n"))
-expectation = float(input("Укажите, какой результат вы хотите получить в км:\n"))
+while True:
+    result_first_day = input("Укажите результат первого дня в км:\n")
+    result_total = input("Укажите, какой результат вы хотите получить в км:\n")
+    if result_first_day.isdigit() and result_total.isdigit():
+        result_first_day = float(result_first_day)
+        result_total = float(result_total)
+        break
+    else:
+        print("Вы ввели не корректные данные, вводите только числа")
 
 day = 1
-while result_km < expectation:
+while result_first_day < result_total:
     day += 1
-    result_km = result_km * 1.1
+    result_first_day = result_first_day * 1.1
 
 print(day)
