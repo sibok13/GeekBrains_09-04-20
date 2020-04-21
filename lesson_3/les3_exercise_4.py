@@ -17,15 +17,17 @@ def my_func(x, y):
         while counter < abs(y):
             result = result * x
             counter += 1
-        if y >= 0:
+        if y > 0:
             print(result)
+        elif y == 0:
+            print('1')
         else:
             print(1 / result)
     except TypeError:
         print('ОШИБКА! Вводите 2 цифры, х - число, y - степень')
 
 
-my_func(2, -2)
+my_func(2, 0)
 
 
 # Простой вариант через "звездочку".
