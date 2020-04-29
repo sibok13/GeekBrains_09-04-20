@@ -6,3 +6,23 @@
 # Задачу можно усложнить, реализовав проверку порядка режимов, и при его нарушении выводить соответствующее сообщение
 # и завершать скрипт.
 
+from time import sleep as sleep
+
+class TrafficLight:
+    _color = ''
+
+    def running(self):
+        while True:
+            self._color = 'Красный'
+            print('\r', self._color, end='')
+            sleep(7)
+            self._color = 'Желтый'
+            print('\r', self._color, end='')
+            sleep(2)
+            self._color = 'Зеленый'
+            print('\r', self._color, end='')
+            sleep(10)
+
+
+a = TrafficLight()
+a.running()
