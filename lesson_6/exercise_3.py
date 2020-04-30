@@ -29,3 +29,6 @@ a._income = {"wage": 5000, "bonus": 10000}
 a.get_full_name()
 print(a.position)
 a.get_total_income()
+
+print(Worker.position)
+print(Worker.position)

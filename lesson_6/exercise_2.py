@@ -6,13 +6,13 @@
 # Например: 20м*5000м*25кг*5см = 12500 т
 
 class Road:
-    _length = ''
-    _width = ''
+    _length = 0
+    _width = 0
 
     def __init__(self, length, width):
-        self.length = length
-        self.width = width
-        result = self.length * self.width * 25 * 5 / 1000
+        self._length = length
+        self._width = width
+        result = self._length * self._width * 25 * 5 / 1000
         print(result)
 
 
