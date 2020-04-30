@@ -6,10 +6,12 @@
 # данные, проверить значения атрибутов, вызвать методы экземпляров)
 
 class Worker:
-    name = 'n/a'
-    surname = 'n/a'
-    position = 'n/a'
-    _income = {"wage": 0, "bonus": 0}
+
+    def __init__(self, name, surname, position, wage, bonus):
+        self.name = name
+        self.surname = surname
+        self.position = position
+        self._income = {"wage": wage, "bonus": bonus}
 
 
 class Position(Worker):
@@ -21,14 +23,12 @@ class Position(Worker):
         print(self._income['wage'] + self._income['bonus'])
 
 
-a = Position()
-a.name = 'Петя'
-a.surname = 'Иванов'
-a.position = 'Менеджер'
-a._income = {"wage": 5000, "bonus": 10000}
+a = Position('Петя', 'Иванов', 'Менеджер', 5000, 10000)
 a.get_full_name()
 print(a.position)
 a.get_total_income()
-
-print(Worker.position)
-print(Worker.position)
+print('--------------')
+b = Position('Миша', 'Кукушкин', 'Инженер', 4000, 12000)
+b.get_full_name()
+print(b.position)
+b.get_total_income()

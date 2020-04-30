@@ -9,10 +9,14 @@
 from random import choice as choice
 
 class Car:
-    speed = '160'
-    color = 'white'
-    name = 'Vesta SW'
+
     is_police = False
+
+    def __init__(self, name, color, speed):
+        self.name = name
+        self.color = color
+        self.speed = speed
+        self.is_police = False
 
     def go(self):
         print('Начало движения')
@@ -24,42 +28,66 @@ class Car:
         direction = choice(('на лево', 'на право'))
         print(f'Поворот {direction}')
 
-    def show_speed(self, speed):
-        if self == TownCar and speed > 60:
-            print('Превышение скорости!')
-        elif self == WorkCar and speed > 40:
-            print('Превышение скорости!')
+    def show_speed(self):
+        print(f'Ваша скорость {self.speed}')
+
+class TownCar(Car):
+
+    def show_speed(self):
+        if self.speed > 60:
+            print(f'Превышение скорости! Ваша скорость {self.speed}')
         else:
-            print(f'Ваша скорость {speed}')
+            print(f'Ваша скорость {self.speed}')
+
+class SportCar(Car):
+
+    color = "Red"
+
+class WorkCar(Car):
+
+    def show_speed(self):
+        if self.speed > 40:
+            print(f'Превышение скорости! Ваша скорость {self.speed}')
+        else:
+            print(f'Ваша скорость {self.speed}')
 
 
-TownCar = Car()
-TownCar.name = 'BMW'
-TownCar.speed = 180
-print(TownCar.name)
-print(TownCar.is_police)
-TownCar.show_speed(100)
+class PoliceCar(Car):
+    is_police = True
+
+
+Car1 = TownCar('BMW', 'Black', 180)
+print(Car1.name)
+print('Машина полиции:', Car1.is_police)
+Car1.go()
+Car1.turn()
+Car1.show_speed()
+Car1.stop()
 print('----------------')
 
-SportCar = Car()
-SportCar.name = 'Ferrari'
-SportCar.speed = 360
-SportCar.color = 'Red'
-print(SportCar.name)
-print(SportCar.is_police)
+Car2 = SportCar('Ferrari', 'Red', 360)
+print(Car2.name)
+print('Машина полиции:', Car2.is_police)
+Car2.go()
+Car2.turn()
+Car2.show_speed()
+Car2.stop()
 print('----------------')
 
-WorkCar = Car()
-WorkCar.name = 'Jeep'
-print(WorkCar.name)
-print(WorkCar.is_police)
-WorkCar.show_speed(50)
+Car3 = WorkCar('Jeep', 'White', 50)
+print(Car3.name)
+print('Машина полиции:', Car3.is_police)
+Car3.go()
+Car3.turn()
+Car3.show_speed()
+Car3.stop()
 print('----------------')
 
-PoliceCar = Car()
-PoliceCar.name = 'Ford'
-PoliceCar.is_police = True
-print(PoliceCar.name)
-print(PoliceCar.is_police)
-PoliceCar.show_speed(160)
+Car4 = PoliceCar('Ford', 'White', 160)
+print(Car4.name)
+print('Машина полиции:', Car4.is_police)
+Car4.go()
+Car4.turn()
+Car4.show_speed()
+Car4.stop()
 print('----------------')
