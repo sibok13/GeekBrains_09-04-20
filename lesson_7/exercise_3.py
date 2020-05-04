@@ -50,8 +50,19 @@ class Cell:
         return Cell(result)
 
     def make_order(self, s_line):
-        pass
 
-Cell1 = Cell(5)
+        for i in range(self.size // s_line + 1):
+            if i <= self.size // s_line - 1:
+                for x in range(s_line):
+                    print('*', end=' ')
+                print('')
+            else:
+                for x in range(self.size % s_line):
+                    print('*', end=' ')
+                print('')
+
+
+Cell1 = Cell(15)
 Cell2 = Cell(5)
-print(Cell1 - Cell2)
+Cell3 = Cell1 + Cell2
+Cell3.make_order(5)
