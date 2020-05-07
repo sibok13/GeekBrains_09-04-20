@@ -5,45 +5,59 @@
 
 class Storage:
 
-    __storage_capacity = 100
+    storage = {
+        'printer': [],
+        'copier': [],
+        'scanner': []
+    }
 
-    def __init__(self):
-        self.total_amount = 0
-        self.storage = {}
+    def add(self, type_eq, data):
+        self.storage[type_eq].append(data)
 
-    def add(self, data, model):
-        self.storage[model] = data
+    def get_total(self):
+        result = {}
+        for eq_type, eq_list in self.storage.items():
+            result[eq_type] = len(eq_list)
+        return result
 
-    def scan(self, model):
-        return self.storage[model]
 
 class Equipment:
 
-    def __init__(self, model, coast, amount):
-        self.model = model
-        self.coast = coast
-        self.amount = amount
+    model: str
+    coast: int
+
+    def add_item(self, **kwargs):
+        self.__dict__.update(kwargs)
 
 class Printer(Equipment):
-
-    def __init__(self, model, coast, amount, print_speed):
-        super().__init__(model, coast, amount)
-        self.print_speed = print_speed
+    type = 'printer'
+    print_speed: int
 
 class Copier(Equipment):
-
-    def __init__(self, model, coast, amount, type_install):
-        super().__init__(model, coast, amount)
-        self.type_install = type_install
+    type = 'copier'
+    type_install: str
 
 class Scanner(Equipment):
-
-    def __init__(self, model, coast, amount, resolution):
-        super().__init__(model, coast, amount)
-        self.resolution = resolution
+    type = 'scanner'
+    resolution: int
 
 
-p = Printer(1, 2, 3, 4)
-sklad = Storage()
-sklad.add(p, 1)
-print(sklad.scan(1))
+Printer1 = Printer()
+Printer1.add_item(model='Canon', coast=5000, print_speed=1000)
+
+Printer2 = Printer()
+Printer2.add_item(model='HP', coast=8000, print_speed=800)
+
+Copier1 = Copier()
+Copier1.add_item(model='Canon', coast=10000, type_install='table')
+
+Scanner1 = Scanner()
+Scanner1.add_item(model='Sony', coast=5000, resolution=1200)
+
+my_storage = Storage
+my_storage().add(Printer1.type, Printer1.__dict__)
+my_storage().add(Printer2.type, Printer2.__dict__)
+my_storage().add(Copier1.type, Copier1.__dict__)
+my_storage().add(Scanner1.type, Scanner1.__dict__)
+
+print(my_storage().get_total())
