@@ -13,6 +13,24 @@ class IsNum(ValueError):
     def __init__(self, txt):
         self.txt = txt
 
+class IsDigit:
+
+    @staticmethod
+    def isfloat(string):
+        try:
+            float(string)
+            return True
+        except ValueError:
+            return False
+
+    @staticmethod
+    def isint(string):
+        try:
+            int(string)
+            return True
+        except ValueError:
+            return False
+
 
 print('Вводите числа, разделяя их нажатием Enter, для окончания ввода наберите "stop"')
 num_list = []
@@ -20,8 +38,10 @@ num_list = []
 while True:
     data = input()
     try:
-        if data.isdigit():
+        if IsDigit.isint(data):
             num_list.append(int(data))
+        elif IsDigit.isfloat(data):
+            num_list.append(float(data))
         elif data == 'stop':
             print(num_list)
             break
